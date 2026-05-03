@@ -1,0 +1,16 @@
+<?php
+require_once 'db.php';
+
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    header('Location: perfil_index.php');
+    exit;
+}
+
+$id = (int) $_GET['id'];
+$stmt = $conn->prepare("DELETE FROM perfil WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$stmt->close();
+
+header('Location: perfil_index.php?msg=eliminado');
+exit;

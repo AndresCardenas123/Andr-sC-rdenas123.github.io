@@ -1,0 +1,7 @@
+Options -MultiViews
+DirectoryIndex index.php
+
+RewriteEngine On
+# Redirige cualquier .html al .php equivalente (ej: tienda.html -> tienda.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.html$ $1.php [L,NC]
